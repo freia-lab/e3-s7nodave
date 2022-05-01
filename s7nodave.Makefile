@@ -31,6 +31,11 @@ ARCH_FILTER += linux-x86_64
 #
 # with $(ASYN_DEP_VERSION) defined in `configure/CONFIG_MODULE`
 
+REQUIRED += asyn
+ifneq ($(strip $(ASYN_DEP_VERSION)),)
+  asyn_VERSION=$(ASYN_DEP_VERSION)
+endif
+
 # Since this file (s7nodave.Makefile) is copied into
 # the module directory at build-time, these paths have to be relative
 # to that path
@@ -44,6 +49,69 @@ APPSRC := $(APP)/src
 #     SOURCES += $(APPSRC)/library.c
 #     HEADERS += $(APPSRC)/library.h
 #     USR_INCLUDES += -I$(where_am_I)$(APPSRC)
+
+#SOURCES +=  $(wildcard $(APPSRC)/*.cc)
+SOURCES +=  $(wildcard $(APPSRC)/../snap7/*.cpp)
+
+SOURCES +=  $(APPSRC)/AnalogSupport.cc
+SOURCES +=  $(APPSRC)/ArraySupport.cc
+SOURCES +=  $(APPSRC)/BinarySupport.cc
+SOURCES +=  $(APPSRC)/LongSupport.cc
+SOURCES +=  $(APPSRC)/MultiBinarySupport.cc
+SOURCES +=  $(APPSRC)/PlcAddress.cc
+SOURCES +=  $(APPSRC)/PollGroup.cc
+SOURCES +=  $(APPSRC)/PortDriver.cc
+SOURCES +=  $(APPSRC)/PortDriverReadItem.cc
+SOURCES +=  $(APPSRC)/PortDriverReadOptimizer.cc
+SOURCES +=  $(APPSRC)/s7nodaveAsyn.cc
+SOURCES +=  $(APPSRC)/S7nodaveInputRecord.cc
+SOURCES +=  $(APPSRC)/S7nodaveOutputRecord.cc
+SOURCES +=  $(APPSRC)/S7nodaveRecordAddress.cc
+SOURCES +=  $(APPSRC)/S7nodaveRecord.cc
+SOURCES +=  $(APPSRC)/StringSupport.cc
+SOURCES +=  $(APPSRC)/utilities.cc
+
+HEADERS +=  $(APPSRC)/AnalogSupport.h
+HEADERS +=  $(APPSRC)/ArraySupport.h
+HEADERS +=  $(APPSRC)/BinarySupport.h
+HEADERS +=  $(APPSRC)/LongSupport.h
+HEADERS +=  $(APPSRC)/MultiBinarySupport.h
+HEADERS +=  $(APPSRC)/Optional.h
+HEADERS +=  $(APPSRC)/PlcAddress.h
+HEADERS +=  $(APPSRC)/PollGroup.h
+HEADERS +=  $(APPSRC)/PortDriver.h
+HEADERS +=  $(APPSRC)/PortDriverReadItem.h
+HEADERS +=  $(APPSRC)/PortDriverReadOptimizer.h
+HEADERS +=  $(APPSRC)/S7nodaveAaiRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveAaoRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveAiRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveAoRecord.h
+HEADERS +=  $(APPSRC)/s7nodaveAsyn.h
+HEADERS +=  $(APPSRC)/S7nodaveBiRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveBoRecord.h
+HEADERS +=  $(APPSRC)/s7nodave.h
+HEADERS +=  $(APPSRC)/S7nodaveInputRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveLonginRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveLongoutRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveMbbiDirectRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveMbbiRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveMbboDirectRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveMbboRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveOutputRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveRecordAddress.h
+HEADERS +=  $(APPSRC)/S7nodaveRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveStringinRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveStringoutRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveWaveformInRecord.h
+HEADERS +=  $(APPSRC)/S7nodaveWaveformOutRecord.h
+HEADERS +=  $(APPSRC)/StringSupport.h
+HEADERS +=  $(APPSRC)/utilities.h
+
+
+
+USR_INCLUDES += -I$(where_am_I)$(APPSRC)/../snap7
+
+DBDS += $(APPSRC)/s7nodave.dbd
 
 TEMPLATES += $(wildcard $(APPDB)/*.db)
 TEMPLATES += $(wildcard $(APPDB)/*.proto)
