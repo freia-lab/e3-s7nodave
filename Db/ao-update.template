@@ -1,0 +1,25 @@
+record (ao, "$(P)$(R)$(S)") {
+  field(DTYP, "s7nodave")
+  field(OUT, "@$(OUT)")
+  field(EGU, "$(EGU='')")
+  field(PREC, "$(PREC=1)")
+}
+record (ai, "$(P)$(R)$(S)-RBK") {
+  field(SCAN, "$(SCAN='1 second')")
+  field(DTYP, "s7nodave")
+  field(EGU, "$(EGU='')")
+  field(PREC, "$(PREC=1)")
+  field(INP, "@$(OUT)")
+  field(FLNK, "$(P)$(R)$(S)-INT")
+}
+
+record (calcout, "$(P)$(R)$(S)-INT") {
+  field(INPA, "$(P)$(R)$(S)-RBK")
+  field(INPB, "$(P)$(R)$(S)-INT.LA")
+  field(INPC, "$(P)$(R)$(S).VAL")
+  field(CALC, "A#B")
+  field(OOPT, "Transition To Non-zero")
+  field(DOPT, "Use OCAL")
+  field(OCAL, "A")
+  field(OUT, "$(P)$(R)$(S).VAL PP")
+}

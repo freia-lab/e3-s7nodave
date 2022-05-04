@@ -1,0 +1,43 @@
+record (longin, "$(P):status") {
+  field(SCAN, "1 second")
+  field(DTYP, "s7nodave")
+  field(INP, "@cowPLC DB3010.DBW66 uint16")
+}
+record (longout, "$(P):ctest") {
+#  field(SCAN, "1 second")
+  field(DTYP, "s7nodave")
+  field(OUT, "@cowPLC DB3010.DBW132 uint16")
+}
+record (longin, "$(P):stest") {
+  field(SCAN, "1 second")
+  field(DTYP, "s7nodave")
+  field(INP, "@cowPLC DB3010.DBW132 uint16")
+  field(FLNK, "$(P):ctest-INT")
+}
+
+record (calcout, "$(P):ctest-INT") {
+  field(INPA, "$(P):stest")
+  field(INPB, "$(P):ctest-INT.LA")
+  field(INPC, "$(P):ctest.VAL")
+  field(CALC, "A#B")
+  field(OOPT, "Transition To Non-zero")
+  field(DOPT, "Use OCAL")
+  field(OCAL, "A")
+  field(OUT, "$(P):ctest.VAL PP")
+}
+
+record (aai, "$(P):board1") {
+  field(SCAN, "1 second")
+  field(DTYP, "s7nodave")
+  field(FTVL, "DOUBLE")
+  field(NELM, "8")
+  field(INP, "@cowPLC DB3010.DBD0 float")
+}
+
+record (aao, "$(P):aao-test") {
+#  field(SCAN, "1 second")
+  field(DTYP, "s7nodave")
+  field(FTVL, "DOUBLE")
+  field(NELM, "10")
+  field(OUT, "@cowPLC DB3010.DBD170 float")
+}
