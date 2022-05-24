@@ -1,10 +1,12 @@
 record (longout, "$(P)$(R)$(S)") {
   field(DTYP, "s7nodave")
+  field(EGU,"$(EGU='')")
   field(OUT, "@$(OUT)")
 }
 record (longin, "$(P)$(P)$(R)$(S)-RBK") {
   field(SCAN, "$(SCAN='1 second')")
   field(DTYP, "s7nodave")
+  field(EGU,"$(EGU='')")
   field(INP, "@$(OUT)")
   field(FLNK, "$(P)$(R)$(S)-INT")
 }
