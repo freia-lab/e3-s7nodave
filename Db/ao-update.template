@@ -1,10 +1,12 @@
 record (ao, "$(P)$(R)$(S)") {
+  field(EGU,"$(DESC='')")
   field(DTYP, "s7nodave")
   field(OUT, "@$(OUT)")
   field(EGU, "$(EGU='')")
   field(PREC, "$(PREC=1)")
 }
 record (ai, "$(P)$(R)$(S)-RBK") {
+  field(EGU,"$(DESC='')")
   field(SCAN, "$(SCAN='1 second')")
   field(DTYP, "s7nodave")
   field(EGU, "$(EGU='')")
