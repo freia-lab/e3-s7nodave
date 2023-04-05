@@ -4,6 +4,7 @@ record (ao, "$(P)$(R)$(S)") {
   field(OUT, "@$(OUT)")
   field(EGU, "$(EGU='')")
   field(PREC, "$(PREC=1)")
+  field(FLNK, "$(P)$(R)$(S)-RBK")
 }
 record (ai, "$(P)$(R)$(S)-RBK") {
   field(DESC,"$(DESC='')")

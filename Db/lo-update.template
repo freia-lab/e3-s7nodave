@@ -3,6 +3,7 @@ record (longout, "$(P)$(R)$(S)") {
   field(DTYP, "s7nodave")
   field(EGU,"$(EGU='')")
   field(OUT, "@$(OUT)")
+  field(FLNK, "$(P)$(R)$(S)-RBK")
 }
 record (longin, "$(P)$(R)$(S)-RBK") {
   field(DESC,"$(DESC='')")
