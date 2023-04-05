@@ -1,18 +1,20 @@
 record (ao, "$(P)$(R)$(S)") {
-  field(EGU,"$(DESC='')")
+  field(DESC,"$(DESC='')")
   field(DTYP, "s7nodave")
   field(OUT, "@$(OUT)")
   field(EGU, "$(EGU='')")
   field(PREC, "$(PREC=1)")
 }
 record (ai, "$(P)$(R)$(S)-RBK") {
-  field(EGU,"$(DESC='')")
+  field(DESC,"$(DESC='')")
   field(SCAN, "$(SCAN='1 second')")
+  field(EVNT, "$(EVNT='')")
   field(DTYP, "s7nodave")
   field(EGU, "$(EGU='')")
   field(PREC, "$(PREC=1)")
   field(INP, "@$(OUT)")
   field(FLNK, "$(P)$(R)$(S)-INT")
+  field(PINI, "YES")
 }
 
 record (calcout, "$(P)$(R)$(S)-INT") {
